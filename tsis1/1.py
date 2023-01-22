@@ -1,2 +1,2 @@
-print("Hello world")
-print("Good")
+username = input("Enter username:")
+print("Username is: " + username)
