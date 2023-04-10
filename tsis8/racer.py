@@ -70,7 +70,7 @@ class Coin(pygame.sprite.Sprite):
     def draw(self,surface):
         surface.blit(self.image,self.rect)
 
-class BIGCoin(pygame.sprite.Sprite):
+'''class BIGCoin(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.image=pygame.image.load('coin.jpg')
@@ -86,8 +86,8 @@ class BIGCoin(pygame.sprite.Sprite):
         self.rect.center=(random.randint(30,350),0)
     def draw(self,surface):
         surface.blit(self.image,self.rect)
-
-class Treasure(pygame.sprite.Sprite):
+'''
+'''class Treasure(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.image=pygame.image.load('megacoin.jpg')
@@ -103,21 +103,22 @@ class Treasure(pygame.sprite.Sprite):
         self.rect.center=(random.randint(30,350),0)
     def draw(self,surface):
         surface.blit(self.image,self.rect)
+        '''
 P1 = Player()
 E1 = Enemy()
 C1=Coin()
-C2=BIGCoin()
-T1=Treasure()
+# C2=BIGCoin()
+# T1=Treasure()
 
 enemies = pygame.sprite.Group()
 enemies.add(E1)
 #adding coins to the sprite group
 coins=pygame.sprite.Group()
 coins.add(C1)
-Bcoins=pygame.sprite.Group()
-Bcoins.add(C2)
-Treas=pygame.sprite.Group()
-Treas.add(T1)
+# Bcoins=pygame.sprite.Group()
+# Bcoins.add(C2)
+# Treas=pygame.sprite.Group()
+# Treas.add(T1)
 
 k = 1
 while True:
@@ -129,26 +130,26 @@ while True:
     P1.update()
     E1.update()
     C1.update()
-    C2.update()
-    T1.update()
+    # C2.update()
+    # T1.update()
     if pygame.sprite.spritecollideany(P1, coins):
        NUM_OF_COINS += 1
        if NUM_OF_COINS >= k * 15:
            ENEMY_STEP += 1
            k += 1
        C1.spawn() #как только игрок тронул монету, нужно создать новую
-    if pygame.sprite.spritecollideany(P1, Bcoins):
-       NUM_OF_COINS += 5
-       if NUM_OF_COINS >= k * 15:
-           ENEMY_STEP += 1
-           k += 1
-       C2.spawn()
-    if pygame.sprite.spritecollideany(P1, Treas):
-       NUM_OF_COINS += 10
-       if NUM_OF_COINS >= k * 15:
-           ENEMY_STEP += 1
-           k += 1
-       T1.spawn() 
+    # if pygame.sprite.spritecollideany(P1, Bcoins):
+    #    NUM_OF_COINS += 5
+    #    if NUM_OF_COINS >= k * 15:
+    #        ENEMY_STEP += 1
+    #        k += 1
+    #    C2.spawn()
+    # if pygame.sprite.spritecollideany(P1, Treas):
+    #    NUM_OF_COINS += 10
+    #    if NUM_OF_COINS >= k * 15:
+    #        ENEMY_STEP += 1
+    #        k += 1
+    #    T1.spawn() 
     if pygame.sprite.spritecollideany(P1, enemies):
         pygame.quit()
         sys.exit()
@@ -162,7 +163,7 @@ while True:
     E1.draw(SURF)
     P1.draw(SURF)
     C1.draw(SURF)
-    C2.draw(SURF)
-    T1.draw(SURF)
+    # C2.draw(SURF)
+    # T1.draw(SURF)
     pygame.display.update()
     clock.tick(FPS)
